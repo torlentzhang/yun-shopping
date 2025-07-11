@@ -42,3 +42,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).（Vue-cli配置参
 ### 引入vant
 
 ### 基于postcss插件实现vw适配
+
+### 路由设计配置
+
+单个页面单独展示的，都配置为1级路由，在1级路由内切换的，设计为2级路由
