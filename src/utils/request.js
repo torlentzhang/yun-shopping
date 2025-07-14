@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { Toast } from 'vant'
 // 创建axios实力，对将来创建出来的实例自定义配置
 // 这样写不会污染原始axios实力
 const instance = axios.create({
@@ -21,6 +22,13 @@ instance.interceptors.request.use(function (config) {
 instance.interceptors.response.use(function (response) {
   // 2xx 范围内的状态码都会触发该函数。
   // 对响应数据做点什么
+  const res = response.data
+  if (res.status !== 200) {
+    // 给提示
+    Toast(res.message)
+    // 抛出错误
+    return Promise.reject(res.message)
+  }
   return response.data
 }, function (error) {
   // 超出 2xx 范围的状态码都会触发该函数。
